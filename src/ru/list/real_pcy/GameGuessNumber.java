@@ -62,7 +62,5 @@ public class GameGuessNumber {
         int rangeCorrection = 1;
         return r.nextInt(highPoint + rangeCorrection);
     }
-
-    //test
-    //test 2
+    //test commit&push from notebook (last commit was from notebook)
 }
