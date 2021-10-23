@@ -65,5 +65,7 @@ public class GameGuessNumber {
     //test commit&push from notebook (last commit was from notebook)
     //test commit&push after deleting other repo, from notebook (last commit was from notebook)
 
-    //test commit&push from computer (last commit was from notebook)
+    //test commit&push from computer (last commit was from notebook) SUCCESSFULLY
+
+    //test commit&push from notebook (last commit was from computer)
 }
