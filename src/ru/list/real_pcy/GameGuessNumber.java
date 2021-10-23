@@ -43,7 +43,7 @@ public class GameGuessNumber {
 //                System.out.println("Мишшн комплит");
 //                counter = 0; //в нашем случае - эквивалент return, так как не исполняется условие
 //                //break  - эквивалент return
-//                //countinue - tioyhrtiuyh
+//                //continue - компилятор пройдётся по данному ответвлению, но пойдёт дальше
 //            }
 //            if (inputNumber > result) {
 //                System.out.println("Введённое число больше загаданного");
@@ -62,10 +62,4 @@ public class GameGuessNumber {
         int rangeCorrection = 1;
         return r.nextInt(highPoint + rangeCorrection);
     }
-    //test commit&push from notebook (last commit was from notebook)
-    //test commit&push after deleting other repo, from notebook (last commit was from notebook)
-
-    //test commit&push from computer (last commit was from notebook) SUCCESSFULLY
-
-    //test commit&push from notebook (last commit was from computer)
 }
