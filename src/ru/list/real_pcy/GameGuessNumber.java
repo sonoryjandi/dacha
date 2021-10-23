@@ -63,4 +63,5 @@ public class GameGuessNumber {
         return r.nextInt(highPoint + rangeCorrection);
     }
     //test commit&push from notebook (last commit was from notebook)
+    //test commit&push after deleting other repo, from notebook (last commit was from notebook)
 }
