@@ -62,4 +62,6 @@ public class GameGuessNumber {
         int rangeCorrection = 1;
         return r.nextInt(highPoint + rangeCorrection);
     }
+
+    //test
 }
