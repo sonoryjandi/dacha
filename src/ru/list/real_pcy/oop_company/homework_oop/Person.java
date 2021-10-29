@@ -11,7 +11,7 @@ package ru.list.real_pcy.oop_company.homework_oop;
  * 5. Класс Company должен иметь метод, который напечатает всех работников. У Company должен быть field name.
  */
 
-public class Person {
+public class Person implements Worker {
 
     private String name;
     private int age;
@@ -79,4 +79,6 @@ public class Person {
             }
         }
     }
+
+
 }

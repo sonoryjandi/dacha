@@ -37,7 +37,8 @@ public class GameGuessNumber {
                 System.out.println("Загаданное число больше");
             }
         }
-//        while (counter != 0) {
+//        Через while
+//        while (counter > 0) {
 //            int inputNumber = scan.nextInt();
 //            if (inputNumber == result) {
 //                System.out.println("Мишшн комплит");

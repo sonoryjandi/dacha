@@ -8,32 +8,11 @@ public class Company {
     private Person[] arrayWorkers;
     private String name;
 
-//    public void hirePerson(Person newWorker) {
-//        for (int i = 0; i < arrayWorkers.length; i++) {
-//            if (arrayWorkers[1] != null) {
-//                continue;
-//            } else {
-//                arrayWorkers[i] = newWorker;
-//                return;
-//            }
-//        }
-//        System.out.println("Работников слишком много");
-//    }
-
     public void addNewWorker(Person newWorker) {
-//        int currentLength = arrayWorkers.length;
-//        Person[] newArrayWorkers = new Person[currentLength+1];
-//        for (int i = 0; i < currentLength; i++){
-//            newArrayWorkers[i] = arrayWorkers[i];
-//        }
-//        newArrayWorkers[newArrayWorkers.length - 1] = newWorker;
-//        arrayWorkers = newArrayWorkers;
-
         arrayWorkers = Arrays.copyOf(arrayWorkers, arrayWorkers.length + 1);
         arrayWorkers[arrayWorkers.length - 1] = newWorker;
         newWorker.setCompanyName(this.name);
     }
-//TODO при увольнении у сотрудника менять companyName
 
     public void deleteWorker(Person firedWorker) {
         Person[] newArrayWorkers = new Person[arrayWorkers.length - 1];
