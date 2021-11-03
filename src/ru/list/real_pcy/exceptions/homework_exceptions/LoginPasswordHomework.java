@@ -19,73 +19,54 @@ import java.util.Scanner;
  * Для проверки латинских букв - input.matches ("[a-zA-Z]+\\.?");
  */
 public class LoginPasswordHomework {
+
     public static void main(String[] args) {
-//        usersPassword();
-        //LOGIN
-        String userInput = login();
-        try {
-            String usersLogin = usersInput(userInput);
-            System.out.println(usersLogin);
-        } catch (DoesNotContainsLatinException е) {
-            System.out.println("Ваш логин должен содержать только символы латинского алфавита");
-        } catch (TooLongException e) {
-            System.out.println("Ваш логин слишком длинный");
-        } catch (Exception e) {
-            System.out.println("Вы получили следующую ошибку: " + e.toString());
-        } finally {
-            System.out.println("Всем спасибо, все свободны");
-        }
-
-        //PASSWORD
-//        try {
-//            String usersPassword = usersInput(userInput);
-//            System.out.println(usersPassword);
-//        } catch (TooLongException e) {
-//            System.out.println("Ваш пароль слишком длинный");
-//        } catch (DoesNotContainsLatinException е) {
-//            System.out.println("Ваш пароль не содержит символов латинского алфавита");
-//        } catch (Exception e) {
-//            System.out.println("Вы получили следующую ошибку: " + e.toString());
-//        } finally {
-//            System.out.println("Всем спасибо, все свободны");
-//        }
-    }
-
-    private static String login() {
-        System.out.println("Введите логин");
         Scanner scanner = new Scanner(System.in);
-        return scanner.nextLine();
+        do {
+            System.out.println("Пройдите авторизацию. Введите логин, пароль и подтвердите пароль");
+        } while (!isValuesCorrect(scanner.next(), scanner.next(), scanner.next()));
     }
-//    private static String loginCheck(){
-//        String userInput = login();
-//        try {
-//            String usersLogin = usersInput(userInput);
-//            System.out.println(usersLogin);
-//        } catch (TooLongException e) {
-//            System.out.println("Ваш логин слишком длинный");
-//        } catch (DoesNotContainsLatinException е) {
-//            System.out.println("Ваш логин должен содержать только символы латинского алфавита");
-//        } catch (Exception e) {
-//            System.out.println("Вы получили следующую ошибку: " + e.toString());
-//        } finally {
-//            System.out.println("Всем спасибо, все свободны");
-//        }
-//        return userInput;
-//    }
 
-//    private static String usersPassword() {
-//        System.out.println("Введите пароль");
-//        Scanner scanner = new Scanner(System.in);
-//        return scanner.nextLine();
-//    }
+    private static boolean isValuesCorrect(String login, String password, String checkPassword) {
+        try {
+            if (!login.matches("[a-zA-Z]+\\.?")) {
+                throw new DoesNotContainsLatinException("Логин должен содержать только символы латинского алфавита!");
+            }
+            if (!password.matches("[a-zA-Z]+\\.?")) {
+                throw new DoesNotContainsLatinException("Пароль должен содержать только символы латинского алфавита!");
+            }
+            if (login.length() > 19) {
+                throw new TooLongException("Логин слишком длинный!");
+            }
+            if (password.length() > 19) {
+                throw new TooLongException("Пароль слишком длинный!");
+            }
+            if (!password.equals(checkPassword)) {
+                throw new WrongPasswordException("Вы ввели неверный пароль!");
+            }
+                System.out.println("Вы успешно авторизированы!");
+                return true;
 
-    private static String usersInput(String login) throws TooLongException, DoesNotContainsLatinException {
-        if (!login.matches("[a-zA-Z]+\\.?")) {
-            throw new DoesNotContainsLatinException("There is wrong symbols is the input");
+            } catch(DoesNotContainsLatinException | TooLongException | WrongPasswordException e){
+                e.printStackTrace();
+                return false;
+            }
         }
 
-        if (login.length() > 20)
-            throw new TooLongException("There is wrong symbols is the input");
-        return login;
-    }
+//// region login, password, checkPassword methods
+//    private static String checkPassword(String userCheckPassword) {
+//        System.out.println("Подтвердите пароль");
+//        return userCheckPassword;
+//    }
+//
+//    private static String password(String userPassword) {
+//        System.out.println("Введите пароль");
+//        return userPassword;
+//    }
+//
+//    private static String login(String userLogin) {
+//        System.out.println("Введите логин");
+//        return userLogin;
+//    }
+//    //endregion
 }

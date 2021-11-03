@@ -28,7 +28,7 @@ public class GameGuessNumber {
             int inputNumber = scan.nextInt();
 
             if (inputNumber == result) {
-                System.out.println("Эйсссс");
+                System.out.println("Верно!");
                 break;
             }
             if (inputNumber > result) {
