@@ -89,18 +89,6 @@ public class CatFeeder {
 
     private static void feedOddAndNonOddCats(int foodCount, boolean isEven) {
 
-//        //старый вариант
-//        if (isEven) {
-//            for (int i = 1; i < catsFeeders.length; i += 2) {
-//                feedOneCat(foodCount, i);
-//            }
-//        } else {
-//            for (int i = 0; i < catsFeeders.length; i += 2) {
-//                feedOneCat(foodCount, i);
-//            }
-//        }
-
-        // новый вариант
         int seed = isEven ? 1 : 0;
         for (int i = seed; i < catsFeeders.length; i += 2) {
             feedOneCat(foodCount, i);
@@ -126,7 +114,6 @@ public class CatFeeder {
         }
 
          catsFeeders[catNumber] = sum;
-//        catsFeeders[catNumber] = catsFeeders[catNumber] + foodCount;
     }
 
 
