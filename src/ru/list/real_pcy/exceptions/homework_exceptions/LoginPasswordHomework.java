@@ -21,52 +21,38 @@ import java.util.Scanner;
 public class LoginPasswordHomework {
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
         do {
             System.out.println("Пройдите авторизацию. Введите логин, пароль и подтвердите пароль");
-        } while (!isValuesCorrect(scanner.next(), scanner.next(), scanner.next()));
+        } while (!isValuesCorrect());
     }
 
-    private static boolean isValuesCorrect(String login, String password, String checkPassword) {
+    public static boolean isValuesCorrect() {
+        Scanner scanner = new Scanner(System.in);
         try {
-            if (!login.matches("[a-zA-Z]+\\.?")) {
-                throw new DoesNotContainsLatinException("Логин должен содержать только символы латинского алфавита!");
-            }
-            if (!password.matches("[a-zA-Z]+\\.?")) {
-                throw new DoesNotContainsLatinException("Пароль должен содержать только символы латинского алфавита!");
-            }
-            if (login.length() > 19) {
-                throw new TooLongException("Логин слишком длинный!");
-            }
-            if (password.length() > 19) {
-                throw new TooLongException("Пароль слишком длинный!");
-            }
-            if (!password.equals(checkPassword)) {
-                throw new WrongPasswordException("Вы ввели неверный пароль!");
-            }
-                System.out.println("Вы успешно авторизированы!");
-                return true;
-
-            } catch(DoesNotContainsLatinException | TooLongException | WrongPasswordException e){
-                e.printStackTrace();
-                return false;
-            }
+            validationCheck(scanner.next(), scanner.next(), scanner.next());
+            return true;
+        } catch (DoesNotContainsLatinException | TooLongException | WrongPasswordException e) {
+            e.printStackTrace();
+            return false;
         }
+    }
 
-//// region login, password, checkPassword methods
-//    private static String checkPassword(String userCheckPassword) {
-//        System.out.println("Подтвердите пароль");
-//        return userCheckPassword;
-//    }
-//
-//    private static String password(String userPassword) {
-//        System.out.println("Введите пароль");
-//        return userPassword;
-//    }
-//
-//    private static String login(String userLogin) {
-//        System.out.println("Введите логин");
-//        return userLogin;
-//    }
-//    //endregion
+    private static void validationCheck (String login, String password, String checkPassword) throws DoesNotContainsLatinException, TooLongException, WrongPasswordException{
+        if (!login.matches("[a-zA-Z]+\\.?")) {
+            throw new DoesNotContainsLatinException("Логин должен содержать только символы латинского алфавита!");
+        }
+        if (!password.matches("[a-zA-Z]+\\.?")) {
+            throw new DoesNotContainsLatinException("Пароль должен содержать только символы латинского алфавита!");
+        }
+        if (login.length() > 19) {
+            throw new TooLongException("Логин слишком длинный!");
+        }
+        if (password.length() > 19) {
+            throw new TooLongException("Пароль слишком длинный!");
+        }
+        if (!password.equals(checkPassword)) {
+            throw new WrongPasswordException("Вы ввели неверный пароль!");
+        }
+        System.out.println("Вы успешно авторизированы!");
+    }
 }
