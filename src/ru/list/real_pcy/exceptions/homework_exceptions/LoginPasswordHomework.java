@@ -23,32 +23,32 @@ public class LoginPasswordHomework {
     public static void main(String[] args) {
         do {
             System.out.println("Пройдите авторизацию. Введите логин, пароль и подтвердите пароль");
-        } while (!isValuesCorrect());
+        } while (!isAuthorizationCorrect());
     }
 
-    public static boolean isValuesCorrect() {
+    public static boolean isAuthorizationCorrect() {
         Scanner scanner = new Scanner(System.in);
         try {
-            validationCheck(scanner.next(), scanner.next(), scanner.next());
+            authorizationCheck(scanner.next(), scanner.next(), scanner.next());
             return true;
-        } catch (DoesNotContainsLatinException | TooLongException | WrongPasswordException e) {
+        } catch (WrongLoginException | WrongPasswordException e) {
             e.printStackTrace();
             return false;
         }
     }
 
-    private static void validationCheck (String login, String password, String checkPassword) throws DoesNotContainsLatinException, TooLongException, WrongPasswordException{
+    private static void authorizationCheck(String login, String password, String checkPassword) throws WrongLoginException, WrongPasswordException {
         if (!login.matches("[a-zA-Z]+\\.?")) {
-            throw new DoesNotContainsLatinException("Логин должен содержать только символы латинского алфавита!");
+            throw new WrongLoginException("Логин должен содержать только символы латинского алфавита!");
         }
         if (!password.matches("[a-zA-Z]+\\.?")) {
-            throw new DoesNotContainsLatinException("Пароль должен содержать только символы латинского алфавита!");
+            throw new WrongPasswordException("Пароль должен содержать только символы латинского алфавита!");
         }
         if (login.length() > 19) {
-            throw new TooLongException("Логин слишком длинный!");
+            throw new WrongLoginException("Логин слишком длинный!");
         }
         if (password.length() > 19) {
-            throw new TooLongException("Пароль слишком длинный!");
+            throw new WrongPasswordException("Пароль слишком длинный!");
         }
         if (!password.equals(checkPassword)) {
             throw new WrongPasswordException("Вы ввели неверный пароль!");
