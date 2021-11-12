@@ -2,25 +2,21 @@ package ru.list.real_pcy.oop_company.homework_oop;
 
 public class Application {
 
-    public static void main(String[] args) {
-        Person alex = new Person();
-        alex.setName("Dan");
-        System.out.println(alex.getName());
-        alex.setName("Finn");
-        System.out.println(alex.getName());
-//        System.out.println(person.name);
-//        person.getName();
-//        String name = person.getName();
-//        System.out.println(name);
+    public static void main(String[] args) throws SalaryValidateException {
+        Person alex = new Person("Alex", 23);
+        Person bob = new Person("Bob", 34);
+        alex.setCompanyName("Google");
+        bob.setCompanyName("Nivea");
+        System.out.println(alex.getCompanyName());
+        System.out.println(bob.getCompanyName());
+        System.out.println(Person.getCompanyName());
 
-        alex.setAge(78);
-        System.out.println(alex.getAge());
-
-        alex.setAge(34);
-        System.out.println(alex.getAge());
-
-        Person bob = new Person();
-        bob.setName("Bob");
-        bob.setAge(13);
+        Company leon = new Company("Leon");
+        leon.printAllWorkers();
+        leon.addNewWorker(alex);
+        leon.addNewWorker(bob);
+        leon.printAllWorkers();
+        leon.deleteWorker(bob);
+        leon.printAllWorkers();
     }
 }
