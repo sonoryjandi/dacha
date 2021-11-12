@@ -43,52 +43,62 @@ public class CatFeeder {
                     "\n 4 - Накормим нечётных котов;" +
                     "\n 5 - Накормим всех полностью и сразу;" +
                     "\n 666 - Выйти");
-            switch (scanner.nextInt()) {
-                case 1:
+            switch (scanner.next()) {
+                case "1":
                     System.out.println("Сколько еды положить? (можно отнять через знак минус)");
-                    int foodCount = scanner.nextInt();
+                    int foodCount = inputToInteger(scanner.next());
                     System.out.println("Какому коту?");
-                    int catNumber = scanner.nextInt();
+                    int catNumber = inputToInteger(scanner.next());
                     feedOneCat(foodCount, catNumber);
                     printAllCatsFood();
                     break;
-                case 2:
+                case "2":
                     System.out.println("Сколько еды положить? (можно отнять через знак минус)");
-                    feedAllCats(scanner.nextInt());
+                    feedAllCats(inputToInteger(scanner.next()));
                     printAllCatsFood();
                     break;
-                case 3:
+                case "3":
                     System.out.println("Сколько еды положить? (можно отнять через знак минус)");
-                    feedOddAndNonOddCats(scanner.nextInt(), true);
+                    feedOddAndNonOddCats(inputToInteger(scanner.next()), true);
                     printAllCatsFood();
                     break;
-                case 4:
+                case "4":
                     System.out.println("Сколько еды положить? (можно отнять через знак минус)");
-                    feedOddAndNonOddCats(scanner.nextInt(), false);
+                    feedOddAndNonOddCats(inputToInteger(scanner.next()), false);
                     printAllCatsFood();
                     break;
-                case 5:
+                case "5":
                     feedAllCatsCompletely();
                     printAllCatsFood();
                     break;
                 default:
                     System.out.println("Неверный набор!");
                     break;
-                case 666:
+                case "666":
                     System.out.println("Пока!");
                     return;
             }
         } while (true);
     }
 
-    private static void feedAllCatsCompletely() {
+    private static int inputToInteger(String userInput) {
+        if (!isInteger(userInput)) {
+            System.out.println("Вы ввели не число!");
+            menu();
+        }
+        return Integer.parseInt(userInput);
+    }
 
+    private static boolean isInteger(String userInput) {
+        return userInput.matches("[0-9]+");
+    }
+
+    private static void feedAllCatsCompletely() {
         Arrays.fill(catsFeeders, 7);
         System.out.println("Все котики сыты:)");
     }
 
     private static void feedOddAndNonOddCats(int foodCount, boolean isEven) {
-
         int seed = isEven ? 1 : 0;
         for (int i = seed; i < catsFeeders.length; i += 2) {
             feedOneCat(foodCount, i);
@@ -102,7 +112,6 @@ public class CatFeeder {
     }
 
     private static void feedOneCat(int foodCount, int catNumber) {
-
         int sum = catsFeeders[catNumber] + foodCount;
         if (sum > 7) {
             System.out.println("У " + catsName[catNumber] + " и так полная миска. Не удалось покормить " + catsName[catNumber]);
@@ -112,10 +121,8 @@ public class CatFeeder {
             System.out.println("Это жестоко:( Вы отнимите у " + catsName[catNumber] + " всю еду. Мы не позволим!");
             return;
         }
-
-         catsFeeders[catNumber] = sum;
+        catsFeeders[catNumber] = sum;
     }
-
 
     private static void printAllCatsFood() {
         System.out.println();
