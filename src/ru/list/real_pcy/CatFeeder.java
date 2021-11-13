@@ -46,25 +46,36 @@ public class CatFeeder {
             switch (scanner.next()) {
                 case "1":
                     System.out.println("Сколько еды положить? (можно отнять через знак минус)");
-                    int foodCount = inputToInteger(scanner.next());
+                    if (!scanner.hasNextInt()){
+                        System.out.println("Вы ввели не число, попробуйте ещё раз!");
+                        scanner.next();
+                        break;
+                    }
+                    int foodCount = scanner.nextInt();
                     System.out.println("Какому коту?");
-                    int catNumber = inputToInteger(scanner.next());
+                    if (!scanner.hasNextInt()){
+                        System.out.println("Вы ввели не число, попробуйте ещё раз!");
+                        scanner.next();
+                        break;
+                    }
+                    int catNumber = scanner.nextInt();
                     feedOneCat(foodCount, catNumber);
                     printAllCatsFood();
                     break;
+
                 case "2":
                     System.out.println("Сколько еды положить? (можно отнять через знак минус)");
-                    feedAllCats(inputToInteger(scanner.next()));
+                    feedAllCats(scanner.nextInt());
                     printAllCatsFood();
                     break;
                 case "3":
                     System.out.println("Сколько еды положить? (можно отнять через знак минус)");
-                    feedOddAndNonOddCats(inputToInteger(scanner.next()), true);
+                    feedOddAndNonOddCats(scanner.nextInt(), true);
                     printAllCatsFood();
                     break;
                 case "4":
                     System.out.println("Сколько еды положить? (можно отнять через знак минус)");
-                    feedOddAndNonOddCats(inputToInteger(scanner.next()), false);
+                    feedOddAndNonOddCats(scanner.nextInt(), false);
                     printAllCatsFood();
                     break;
                 case "5":
@@ -81,18 +92,7 @@ public class CatFeeder {
         } while (true);
     }
 
-    private static int inputToInteger(String userInput) {
-        if (!isInteger(userInput)) {
-            System.out.println("Вы ввели не число!");
-            menu();
-        }
-        return Integer.parseInt(userInput);
-    }
-
-    private static boolean isInteger(String userInput) {
-        return userInput.matches("[0-9]+");
-    }
-
+    // Action
     private static void feedAllCatsCompletely() {
         Arrays.fill(catsFeeders, 7);
         System.out.println("Все котики сыты:)");
