@@ -19,19 +19,18 @@ public class GameGuessNumber {
         System.out.println("Введите число от 1 до 100");
         int result = getRandomNumber();
         Scanner scan = new Scanner(System.in);
-        String inputNumber;
 
         for (int counter = 0; counter < 10; counter++) {
-            inputNumber = scan.next();
-            if (!validation(inputNumber)){
+            if (!scan.hasNextInt()) {
                 System.out.println("Вы потратили попытку, так как ввели не число:)");
                 continue;
             }
-            if (Integer.parseInt(inputNumber) > result) {
+            int inputNumber = scan.nextInt();
+            if (inputNumber > result) {
                 System.out.println("Загаданное число меньше");
                 continue;
             }
-            if (Integer.parseInt(inputNumber) < result) {
+            if (inputNumber < result) {
                 System.out.println("Загаданное число больше");
                 continue;
             }
@@ -46,9 +45,5 @@ public class GameGuessNumber {
         int highPoint = 100;
         int rangeCorrection = 1;
         return r.nextInt(highPoint + rangeCorrection);
-    }
-
-    private static boolean validation (String inputNumber) {
-     return inputNumber.matches("[0-9]+");
     }
 }
