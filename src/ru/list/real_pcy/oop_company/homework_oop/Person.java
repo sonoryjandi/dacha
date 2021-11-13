@@ -77,7 +77,7 @@ public class Person {
 
     public void emptySalary() throws EmptySalaryException {
         if (salary == 0) {
-                throw new EmptySalaryException("Зарплата не объявлена");
+            throw new EmptySalaryException("Зарплата не объявлена");
         }
     }
 }
