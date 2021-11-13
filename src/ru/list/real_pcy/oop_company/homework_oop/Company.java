@@ -32,7 +32,6 @@ public class Company {
         arrayWorkers = newArrayWorkers;
     }
 
-    //        5. Класс Company должен иметь метод, который напечатает всех работников.
     public void printAllWorkers() {
         for (int i = 0; i < arrayWorkers.length; i++) {
             Person s = arrayWorkers[i];

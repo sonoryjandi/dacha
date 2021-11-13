@@ -63,12 +63,10 @@ public class Person {
 
     // endregion
 
-    //2. Написать метод в этом классе, который проверяет, что зарплата не меньше, чем возраст - этот метод должен возвращать boolean.
     public boolean isSalaryGreaterThenAge() {
         return salary >= age;
     }
 
-    //3. Написать метод salaryValidate, который вызывает метод из пункта 2 и выкидывает исключения, если проверка не проходит.
     public void salaryValidate() throws SalaryValidateException {
         if (!isSalaryGreaterThenAge()) {
             throw new SalaryValidateException("Возраст больше зарплаты!");
