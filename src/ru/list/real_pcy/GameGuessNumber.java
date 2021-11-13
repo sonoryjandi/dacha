@@ -23,6 +23,7 @@ public class GameGuessNumber {
         for (int counter = 0; counter < 10; counter++) {
             if (!scan.hasNextInt()) {
                 System.out.println("Вы потратили попытку, так как ввели не число:)");
+                scan.next();
                 continue;
             }
             int inputNumber = scan.nextInt();
