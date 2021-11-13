@@ -11,4 +11,8 @@ public interface Info { // задача: выводить инфу класса 
 
     public void showInfo(); //интерфейс с сигнатурой метода "покажи инфу"
     // сигнатура - название метода + параметры
+
+    public default void run() {
+        System.out.println("Беги!");
+    }
 }
