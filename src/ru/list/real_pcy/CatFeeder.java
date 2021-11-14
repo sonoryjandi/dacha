@@ -45,38 +45,16 @@ public class CatFeeder {
                     "\n 666 - Выйти");
             switch (scanner.next()) {
                 case "1":
-                    System.out.println("Сколько еды положить? (можно отнять через знак минус)");
-                    if (!scanner.hasNextInt()){
-                        System.out.println("Вы ввели не число, попробуйте ещё раз!");
-                        scanner.next();
-                        break;
-                    }
-                    int foodCount = scanner.nextInt();
-                    System.out.println("Какому коту?");
-                    if (!scanner.hasNextInt()){
-                        System.out.println("Вы ввели не число, попробуйте ещё раз!");
-                        scanner.next();
-                        break;
-                    }
-                    int catNumber = scanner.nextInt();
-                    feedOneCat(foodCount, catNumber);
-                    printAllCatsFood();
+                    feedOneCatAction();
                     break;
-
                 case "2":
-                    System.out.println("Сколько еды положить? (можно отнять через знак минус)");
-                    feedAllCats(scanner.nextInt());
-                    printAllCatsFood();
+                    feedAllCatsAction();
                     break;
                 case "3":
-                    System.out.println("Сколько еды положить? (можно отнять через знак минус)");
-                    feedOddAndNonOddCats(scanner.nextInt(), true);
-                    printAllCatsFood();
+                    feedOddAndNonOddCatsAction(true);
                     break;
                 case "4":
-                    System.out.println("Сколько еды положить? (можно отнять через знак минус)");
-                    feedOddAndNonOddCats(scanner.nextInt(), false);
-                    printAllCatsFood();
+                    feedOddAndNonOddCatsAction(false);
                     break;
                 case "5":
                     feedAllCatsCompletely();
@@ -92,7 +70,49 @@ public class CatFeeder {
         } while (true);
     }
 
-    // Action
+    // Actions
+    private static void feedOddAndNonOddCatsAction(boolean isEven) {
+        System.out.println("Сколько еды положить? (можно отнять через знак минус)");
+        if (!scanner.hasNextInt()) {
+            System.out.println("Вы ввели не число, попробуйте ещё раз!");
+            scanner.next();
+            return;
+        }
+        feedOddAndNonOddCats(scanner.nextInt(), isEven);
+        printAllCatsFood();
+    }
+
+    private static void feedAllCatsAction() {
+        System.out.println("Сколько еды положить? (можно отнять через знак минус)");
+        if (!scanner.hasNextInt()) {
+            System.out.println("Вы ввели не число, попробуйте ещё раз!");
+            scanner.next();
+            return;
+        }
+        feedAllCats(scanner.nextInt());
+        printAllCatsFood();
+    }
+
+    private static void feedOneCatAction() {
+        System.out.println("Сколько еды положить? (можно отнять через знак минус)");
+        if (!scanner.hasNextInt()){
+            System.out.println("Вы ввели не число, попробуйте ещё раз!");
+            scanner.next();
+            return;
+        }
+        int foodCount = scanner.nextInt();
+        System.out.println("Какому коту?");
+        if (!scanner.hasNextInt()){
+            System.out.println("Вы ввели не число, попробуйте ещё раз!");
+            scanner.next();
+            return;
+        }
+        int catNumber = scanner.nextInt();
+        feedOneCat(foodCount, catNumber);
+        printAllCatsFood();
+    }
+
+    // Methods
     private static void feedAllCatsCompletely() {
         Arrays.fill(catsFeeders, 7);
         System.out.println("Все котики сыты:)");

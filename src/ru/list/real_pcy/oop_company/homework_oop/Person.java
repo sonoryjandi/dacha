@@ -52,7 +52,6 @@ public class Person {
         this.salary = salary;
     }
 
-    //Т.к CompanyName - статичное поле, при изменении поля один раз происходит изменение имени на уровне всего класса
     public static String getCompanyName() {
         return companyName;
     }
