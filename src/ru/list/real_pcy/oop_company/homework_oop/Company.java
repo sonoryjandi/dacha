@@ -12,6 +12,7 @@ public class Company {
         this.arrayWorkers = new Person[0];
     }
 
+
     public void addNewWorker(Person newWorker) {
         arrayWorkers = Arrays.copyOf(arrayWorkers, arrayWorkers.length + 1);
         arrayWorkers[arrayWorkers.length - 1] = newWorker;
@@ -55,6 +56,5 @@ public class Company {
     public void setName(String name) {
         this.name = name;
     }
-
     // endregion
 }

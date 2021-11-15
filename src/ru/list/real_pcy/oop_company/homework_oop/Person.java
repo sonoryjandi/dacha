@@ -59,22 +59,19 @@ public class Person {
     public static void setCompanyName(String name) {
         companyName = name;
     }
-
     // endregion
 
-    public boolean isSalaryGreaterThenAge() {
+    private boolean isSalaryGreaterThenAge() {
         return salary >= age;
     }
 
-    public void salaryValidate() throws SalaryValidateException {
-        if (!isSalaryGreaterThenAge()) {
-            throw new SalaryValidateException("Возраст больше зарплаты!");
-        }
-    }
-
-    public void emptySalary() throws EmptySalaryException {
+    public void salaryValidate() throws WrongSalaryException {
         if (salary == 0) {
-            throw new EmptySalaryException("Зарплата не объявлена");
+            throw new WrongSalaryException("Зарплата не установлена!");
         }
+        if (!isSalaryGreaterThenAge()) {
+            throw new WrongSalaryException("Возраст больше зарплаты!");
+        }
+        System.out.println(this.name + " имеет зарплату в размере " + this.salary);
     }
 }

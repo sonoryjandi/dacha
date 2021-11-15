@@ -2,7 +2,7 @@ package ru.list.real_pcy.oop_company.homework_oop;
 
 public class Application {
 
-    public static void main(String[] args) throws SalaryValidateException {
+    public static void main(String[] args) throws WrongSalaryException {
         Person alex = new Person("Alex", 23);
         Person bob = new Person("Bob", 34);
         alex.setCompanyName("Google");
@@ -18,5 +18,9 @@ public class Application {
         leon.printAllWorkers();
         leon.deleteWorker(bob);
         leon.printAllWorkers();
+
+        alex.setSalary(12000);
+        alex.salaryValidate();
+        bob.salaryValidate();
     }
 }

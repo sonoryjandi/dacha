@@ -36,13 +36,7 @@ public class CatFeeder {
 
     private static void menu() {
         do {
-            System.out.println("Что будем делать?" +
-                    "\n 1 - Накормим одного кота;" +
-                    "\n 2 - Накормим всех котов;" +
-                    "\n 3 - Накормим чётных котов;" +
-                    "\n 4 - Накормим нечётных котов;" +
-                    "\n 5 - Накормим всех полностью и сразу;" +
-                    "\n 666 - Выйти");
+            showMenu();
             switch (scanner.next()) {
                 case "1":
                     feedOneCatAction();
@@ -70,7 +64,16 @@ public class CatFeeder {
         } while (true);
     }
 
-    // Actions
+    private static void showMenu() {
+        System.out.println("Что будем делать?" +
+                "\n 1 - Накормим одного кота;" +
+                "\n 2 - Накормим всех котов;" +
+                "\n 3 - Накормим чётных котов;" +
+                "\n 4 - Накормим нечётных котов;" +
+                "\n 5 - Накормим всех полностью и сразу;" +
+                "\n 666 - Выйти");
+    }
+
     private static void feedOddAndNonOddCatsAction(boolean isEven) {
         System.out.println("Сколько еды положить? (можно отнять через знак минус)");
         if (!scanner.hasNextInt()) {
@@ -112,7 +115,6 @@ public class CatFeeder {
         printAllCatsFood();
     }
 
-    // Methods
     private static void feedAllCatsCompletely() {
         Arrays.fill(catsFeeders, 7);
         System.out.println("Все котики сыты:)");
