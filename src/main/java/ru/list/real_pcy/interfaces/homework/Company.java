@@ -1,26 +1,28 @@
-package ru.list.real_pcy.oop_company.homework_oop;
+package ru.list.real_pcy.interfaces.homework;
 
 import java.util.Arrays;
 
-public class Company {
+public class Company implements IdealCompany {
 
-    private Person[] arrayWorkers;
+    private Worker[] arrayWorkers;
     private String name;
 
     public Company(String name) {
         this.name = name;
-        this.arrayWorkers = new Person[0];
+        this.arrayWorkers = new Worker[0];
     }
 
-
-    public void addNewWorker(Person newWorker) {
+    @Override
+    public void addNewWorker(Worker newWorker, double salary) {
         arrayWorkers = Arrays.copyOf(arrayWorkers, arrayWorkers.length + 1);
         arrayWorkers[arrayWorkers.length - 1] = newWorker;
         newWorker.setCompanyName(this.name);
+        newWorker.setSalary(salary);
     }
 
-    public void deleteWorker(Person firedWorker) {
-        Person[] newArrayWorkers = new Person[arrayWorkers.length - 1];
+    @Override
+    public void deleteWorker(Worker firedWorker) {
+        Worker[] newArrayWorkers = new Worker[arrayWorkers.length - 1];
         int counter = 0;
         for (int i = 0; i < arrayWorkers.length; i++) {
             if (arrayWorkers[i] == firedWorker) {
@@ -30,22 +32,23 @@ public class Company {
             counter++;
         }
         firedWorker.setCompanyName(null);
+        firedWorker.setSalary(0);
         arrayWorkers = newArrayWorkers;
     }
 
+    @Override
     public void printAllWorkers() {
         for (int i = 0; i < arrayWorkers.length; i++) {
-            Person s = arrayWorkers[i];
-            System.out.println(s.getName());
+            System.out.println(arrayWorkers[i].getName());
         }
     }
 
     //region getter-setter
-    public Person[] getArrayWorkers() {
+    public Worker[] getArrayWorkers() {
         return arrayWorkers;
     }
 
-    public void setArrayWorkers(Person[] arrayWorkers) {
+    public void setArrayWorkers(Worker[] arrayWorkers) {
         this.arrayWorkers = arrayWorkers;
     }
 

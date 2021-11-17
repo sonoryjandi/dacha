@@ -10,7 +10,7 @@ public interface Worker {
 
     /**
      * Метод возвращает имя работника.
-     * @return
+     * @return имя сотрудника
      */
     String getName();
 

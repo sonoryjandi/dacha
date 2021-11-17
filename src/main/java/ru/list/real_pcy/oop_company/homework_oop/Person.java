@@ -20,7 +20,7 @@ public class Person {
     private String name;
     private int age;
     private double salary;
-    private static String companyName;
+    private String companyName;
 
     public Person(String name, int age) {
         this.name = name;
@@ -52,12 +52,12 @@ public class Person {
         this.salary = salary;
     }
 
-    public static String getCompanyName() {
+    public String getCompanyName() {
         return companyName;
     }
 
-    public static void setCompanyName(String name) {
-        companyName = name;
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
     }
     // endregion
 
@@ -65,13 +65,17 @@ public class Person {
         return salary >= age;
     }
 
-    public void salaryValidate() throws WrongSalaryException {
-        if (salary == 0) {
-            throw new WrongSalaryException("Зарплата не установлена!");
+    public void salaryValidate() {
+        try {
+            if (salary == 0) {
+                throw new WrongSalaryException("Salary isn't set!");
+            }
+            if (!isSalaryGreaterThenAge()) {
+                throw new WrongSalaryException("Age is greater then salary");
+            }
+            System.out.println(this.name + " has a salary that equals " + this.salary);
+        } catch (WrongSalaryException exception) {
+            System.out.println(exception);
         }
-        if (!isSalaryGreaterThenAge()) {
-            throw new WrongSalaryException("Возраст больше зарплаты!");
-        }
-        System.out.println(this.name + " имеет зарплату в размере " + this.salary);
     }
 }

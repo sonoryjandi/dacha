@@ -1,5 +1,7 @@
 package ru.list.real_pcy.interfaces.homework;
 
+import ru.list.real_pcy.oop_company.homework_oop.WrongSalaryException;
+
 /**
  * 1. Создать 1 статичное поле любого типа String попробовать поменять
  * его у Боба и у Алекса; String companyName. Должен быть статичный метод,
@@ -60,25 +62,20 @@ public class Person implements Worker {
     public void setCompanyName(String companyName) {
         this.companyName = companyName;
     }
-
     // endregion
 
-    //2. Написать метод в этом классе, который проверяет, что зарплата не меньше, чем возраст - этот метод должен возвращать boolean.
     public boolean isSalaryGreaterThenAge() {
         return salary >= age;
     }
 
-    //3. Написать метод salaryValidate, который вызывает метод из пункта 2 и выкидывает исключения, если проверка не проходит.
-    public void salaryValidate() throws SalaryValidateException {
-        if (!isSalaryGreaterThenAge()) {
-            throw new SalaryValidateException("Возраст больше зарплаты!");
-        }
-    }
-
-    public void emptySalary() throws EmptySalaryException {
+    public void salaryValidate() throws WrongSalaryException {
         if (salary == 0) {
-                throw new EmptySalaryException("Зарплата не объявлена");
+            throw new WrongSalaryException("Зарплата не установлена!");
         }
+        if (!isSalaryGreaterThenAge()) {
+            throw new WrongSalaryException("Возраст больше зарплаты!");
+        }
+        System.out.println(this.name + " имеет зарплату в размере " + this.salary);
     }
 
     @Override

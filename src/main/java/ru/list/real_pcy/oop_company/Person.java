@@ -1,4 +1,4 @@
-package ru.list.real_pcy.oop;
+package ru.list.real_pcy.oop_company;
 
 /**
  * 1. создать 1 статичное поле любого типа String попробовать поменять
